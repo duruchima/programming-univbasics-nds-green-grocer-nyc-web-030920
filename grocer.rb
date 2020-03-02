@@ -15,7 +15,16 @@ def consolidate_cart(cart)
   #
   # REMEMBER: This returns a new Array that represents the cart. Don't merely
   # change `cart` (i.e. mutate) it. It's easier to return a new thing.
+  new_cart=[]
+  cart.each do |cart_contents|
+  cart_contents.each do |items, attributes|
+    new_cart[items] | |= attributes
+    if new_cart[items][:count]
+      new_cart[items][:count]+=1
+    else new_cart[items][:count]=1
+  end
 end
+new_cart
 
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
