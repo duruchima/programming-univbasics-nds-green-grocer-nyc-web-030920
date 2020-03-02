@@ -1,3 +1,6 @@
+CLEARANCE_ITEM_DISCOUNT_RATE = 0.20
+BIG_PURCHASE_DISCOUNT_RATE = 0.10
+
 def find_item_by_name_in_collection(name, collection)
   # Implement me first!
   #
@@ -71,15 +74,17 @@ def apply_clearance(cart)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
-  i=0
-  while i<cart.length do |item, attribute_hash|
-    if attribute_hash[:clearance] == true
-      attribute_hash[:price] = (attribute_hash[:price] *
-      0.8).round(2)
-    end
-    i+=1
-  end
-cart
+  i = 0
+ while i < cart.length do
+   item = cart[i]
+   if item[:clearance]
+     discounted_price = ((1 - CLEARANCE_ITEM_DISCOUNT_RATE) * item[:price]).round(2)
+       item[:price] = discounted_price
+   end
+   i += 1
+ end
+
+ cart
 end
 
 def checkout(cart, coupons)
