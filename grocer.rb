@@ -71,6 +71,16 @@ def apply_clearance(cart)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
+  i=0
+  while i<cart do |item, attribute_hash|
+    if attribute_hash[:clearance] == true
+      attribute_hash[:price] = (attribute_hash[:price] *
+      0.8).round(2)
+    end
+    i+=1
+  end
+cart
+end
 end
 
 def checkout(cart, coupons)
