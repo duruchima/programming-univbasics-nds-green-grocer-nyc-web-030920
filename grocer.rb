@@ -106,5 +106,5 @@ def checkout(cart, coupons)
     total+=clearance_cart[i][:price] * clearance_cart[i][:count]
     i+=1
   end
-  total=(total * 0.9) if total > 100 total
+  total=(total * 0.9) if total > 100
 end
